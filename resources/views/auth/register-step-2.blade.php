@@ -123,6 +123,9 @@
         $( "#expired_credit_card" ).datepicker({
           dateFormat: "yy-mm-dd"
         });
+        $('#membership_type').select2({
+          placeholder: 'Select an option'
+        });
     } );
 </script>
 

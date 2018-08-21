@@ -55,7 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'address' => 'required|max:255',
             'date_of_birth' => 'required|date',
-            'number_credit_card' => 'required|integer',
+            'number_credit_card' => 'required',
             'expired_credit_card' => 'required|date'
         ]);
     }
@@ -82,7 +82,7 @@ class RegisterController extends Controller
     }
 
     public function step2($id) {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $data = [
             'user' => $user
         ];
@@ -92,7 +92,7 @@ class RegisterController extends Controller
     public function postStep2(Request $request, $id) {
         $this->validatorStep2($request->all())->validate();
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $userPersonalData = new UserPersonalData;
         $userPersonalData->address = $request->address;
         $userPersonalData->date_of_birth = $request->date_of_birth;
@@ -108,7 +108,7 @@ class RegisterController extends Controller
     }
 
     public function step3($id) {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $data = [
             'user' => $user
         ];

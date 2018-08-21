@@ -18,7 +18,7 @@ class CreateUserPersonalData extends Migration
             $table->text('address');
             $table->date('date_of_birth');
             $table->string('membership_type');
-            $table->integer('number_credit_card');
+            $table->text('number_credit_card');
             $table->string('type_credit_card');
             $table->date('expired_credit_card');
             $table->integer('user_id')->unsigned();
